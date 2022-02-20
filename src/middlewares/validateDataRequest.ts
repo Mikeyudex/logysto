@@ -5,7 +5,7 @@ const validateDataRequest = (req: any, res: any, next: any) => {
 
     let dataRequest: typesSearchPlacesRequest = req.body
 
-    if (dataRequest.address.length === 0 || dataRequest.address.length === undefined) {
+    if (dataRequest.address === undefined || dataRequest.address.length === 0) {
  
         return res.status(500).json(
             {
