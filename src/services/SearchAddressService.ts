@@ -8,13 +8,13 @@ import { typesSearchPlacesRequest } from '../interfaces/typesSearchPlacesRequest
      * Clase que se encarga de manejar las solicitudes de ubicaciones de restaurantes segun las coordenadas pasadas.
      * @author Miguel García
 */
-export class SearchPlacesService {
+export class SearchAddressService {
 
-  public async searchByCoords(data: typesSearchPlacesRequest) {
+  public async searchAddress(data: typesSearchPlacesRequest) {
 
     return new Promise((resolve, reject) => {
 
-      let url = `https://api.geoapify.com/v2/places?categories=catering.restaurant&bias=proximity:`
+      let url = `https://api.geoapify.com/v1/geocode/search?${data.address}&limit=${data.limit ?? 2}&lang=es&format=json&apiKey=${configs.APIKEY}`
       let config: AxiosRequestConfig = {
         method: 'get',
         url: url,

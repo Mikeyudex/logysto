@@ -1,21 +1,19 @@
 import { Response } from 'express';
-import { SearchPlacesService } from '../services/SearchPlacesService';
+import { SearchAddressService } from '../services/SearchAddressService';
 import { typesSearchPlacesRequest } from '../interfaces/typesSearchPlacesRequest';
 import VerifyToken from "../middlewares/verifyToken";
 
 
-const searchPlacesService: SearchPlacesService = new SearchPlacesService();
+const searchAddressService: SearchAddressService = new SearchAddressService();
 const verifyToken = new VerifyToken();
 
 
-const searchPlacesController = async (req: any, res: Response) => {
+const searchAddressController = async (req: any, res: Response) => {
 
     try {
         let typesRequest : typesSearchPlacesRequest = req.body;
-        let decode:any = await verifyToken.verify(req.token);
-        
-        
-        let responseService:any = await searchPlacesService.searchByCoords(typesRequest)
+        await verifyToken.verify(req.token);
+        let responseService:any = await searchAddressService.searchAddress(typesRequest)
         res.status(200).json(
             {
                 message: responseService,
@@ -36,5 +34,5 @@ const searchPlacesController = async (req: any, res: Response) => {
 }
 
 module.exports = {
-    searchPlacesController
+    searchAddressController
 }

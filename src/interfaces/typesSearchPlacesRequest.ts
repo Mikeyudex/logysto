@@ -1,5 +1,6 @@
 export interface typesSearchPlacesRequest {
 
-    address: string
+    address: string,
+    limit: number
 
 }

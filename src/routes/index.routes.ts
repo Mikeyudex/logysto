@@ -1,9 +1,11 @@
 import express, {Router} from "express";
+const { searchAddressController } = require('../controllers/SearchAddressController');
 const router: Router = express.Router();
-const validateDataRequest = require('../middlewares/validateDataRequest')
+const validateDataRequest = require('../middlewares/validateDataRequest');
 
-/* 
-router.get("/searchByCoords",validateDataRequest, searchPlacesController);
-router.get("/historical", HistoricalTransactions); */
+
+
+router.get("/search-address", validateDataRequest, searchAddressController);
+
 
 module.exports = router;
