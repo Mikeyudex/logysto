@@ -1,15 +1,16 @@
-import VerifyToken from '../middlewares/verifyToken'
-const validateToken = new VerifyToken()
-
 import { DaoUsers } from '../dao/DaoUsers';
 import { Response } from 'express';
+const { hashedPassword } = require('../utils/hashedPassword');
 const users = new DaoUsers();
 
 
-const createUser = async (req: any, res: Response) => {
+
+
+const registerUser = async (req: any, res: Response) => {
 
     try {
 
+        let passwordHashed: string = await hashedPassword()
         let responseUser: string = await users.createUser(req.body)
         res.status(200).json(
             {
@@ -31,5 +32,5 @@ const createUser = async (req: any, res: Response) => {
 }
 
 module.exports = {
-    createUser
+    registerUser
 }

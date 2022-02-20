@@ -14,7 +14,7 @@ export class SearchPlacesService {
 
     return new Promise((resolve, reject) => {
 
-      let url = `https://api.geoapify.com/v2/places?categories=catering.restaurant&bias=proximity:${data.lon},${data.lat}&limit=${data.limit ?? 10}&lang=es&apiKey=${configs.APIKEY}`
+      let url = `https://api.geoapify.com/v2/places?categories=catering.restaurant&bias=proximity:`
       let config: AxiosRequestConfig = {
         method: 'get',
         url: url,
@@ -28,7 +28,7 @@ export class SearchPlacesService {
           }
           resolve(response.data)
         })
-        .catch((error) => {
+        .catch((error:any) => {
           reject(error?.response?.data)
         });
     })
