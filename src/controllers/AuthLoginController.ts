@@ -9,19 +9,24 @@ const { comparePassword } = require('../utils/comparePassword');
      * Autentica al usuario, devolviendo un token
      * @param {Request} req
      * @param {Response} res
-    */ 
+    */
 const AuthLogin = async (req: Request, res: Response) => {
 
     try {
         const { username, password } = req.body;
 
-        if (username == undefined || null || username.length == 0) {
+        if (password === undefined || password === null || password.length == 0) {
 
-            res.status(500).json({ error: true, errorMessage: "Debe ingresar usuario y contraseña" });
+            return res.status(500).json({ error: true, errorMessage: "Debe ingresar contraseña" });
+        }
+        if (username === undefined || username === null || username.length == 0) {
+
+            return res.status(500).json({ error: true, errorMessage: "Debe ingresar usuario" });
+
         } else {
-            
+
             let user = await ValidateUser(username);
-            await comparePassword(password, user.password);
+            await comparePassword(password, user[0].password);
             const token = jwt.sign({ username, password }, configs.secretKey); //Generar token para el usuario
 
             res.status(200).json({
