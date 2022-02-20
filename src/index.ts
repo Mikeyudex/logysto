@@ -1,9 +1,12 @@
 import express, {Request, Response} from 'express';
 import bodyParser from "body-parser";
+import { configsTypes } from './configs/confs';
+
 
 const cors = require('cors');
 const app = express();
 require('dotenv').config();
+const confs : configsTypes = require('./configs/confs');
 const serviceRoutes = require('./routes/index.routes');
 const userRoutes = require('./routes/users.routes');
 const validateToken = require('./middlewares/validateToken');
@@ -12,8 +15,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //Up Server
-app.listen(process.env.PORT, () => {
-    console.log(`Server on port 2500`);
+app.listen(confs.PORT, () => {
+    console.log(`Server on port ${confs.PORT}`);
 });
 
 //Require Connection Database
