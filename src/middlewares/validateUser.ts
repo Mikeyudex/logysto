@@ -1,5 +1,5 @@
-import {DaoUsers} from '../dao/DaoUsers'
-const users: DaoUsers = new DaoUsers()
+import {DaoUsers} from '../dao/DaoUsers';
+const users: DaoUsers = new DaoUsers();
 
 
 //Valida si el usuario existe en la base de datos
@@ -10,7 +10,7 @@ const validateUser = async (username: string) => {
             const resultado = await users.getUserByUsername(username)
 
             if(resultado != null) {
-                resolve()
+                resolve(resultado);
             } else {
                 reject("Lo sentimos no existe el usuario.")
             }

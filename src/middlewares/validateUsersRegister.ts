@@ -1,4 +1,3 @@
-import { typesSearchPlacesRequest } from '../interfaces/typesSearchPlacesRequest';
 import { typesUsers } from '../interfaces/typesUsers';
 
 //Valida información del registro de usuario
