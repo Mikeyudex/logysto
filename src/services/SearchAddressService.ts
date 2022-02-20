@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-const configs: configsTypes = require('../configs/confs')
-import { configsTypes } from '../configs/confs'
+const configs: configsTypes = require('../configs/confs');
+import { configsTypes } from '../configs/confs';
 import { typesSearchPlacesRequest } from '../interfaces/typesSearchPlacesRequest';
 
 
