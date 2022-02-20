@@ -4,9 +4,6 @@ import { typesUsers } from '../interfaces/typesUsers';
 const { hashedPassword } = require('../utils/hashedPassword');
 const users = new DaoUsers();
 
-
-
-
 const registerUser = async (req: any, res: Response) => {
 
     try {
