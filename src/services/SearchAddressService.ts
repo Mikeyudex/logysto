@@ -5,7 +5,7 @@ import { typesSearchPlacesRequest } from '../interfaces/typesSearchPlacesRequest
 
 
 /**
-     * Clase que se encarga de manejar las solicitudes de ubicaciones de restaurantes segun las coordenadas pasadas.
+     * Clase que se encarga de manejar las solicitudes de búsqueda de direcciones y retorna las coordenadas.
      * @author Miguel García
 */
 export class SearchAddressService {
