@@ -2,6 +2,9 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 const configs: configsTypes = require('../configs/confs');
 import { configsTypes } from '../configs/confs';
 import { typesSearchPlacesRequest } from '../interfaces/typesSearchPlacesRequest';
+import { SearchAddressServiceMapbox } from './SearchAddressServiceMapbox';
+
+const searchAddressServiceMapbox : SearchAddressServiceMapbox = new SearchAddressServiceMapbox();
 
 /**
      * Clase que se encarga de manejar las solicitudes de búsqueda de direcciones y retorna las coordenadas.
@@ -28,8 +31,16 @@ export class SearchAddressService {
           let dataResponse:any[] = this.responseMap(response.data?.results)
           resolve(dataResponse);
         })
-        .catch((error: any) => {
-          reject(error?.response?.data)
+        .catch(async(err: any) => {
+          console.log(err);
+          try {
+            let responseServiceMapbox =  await searchAddressServiceMapbox.searchAddress(data);
+            resolve(responseServiceMapbox)
+          } catch (error) {
+            console.log(error);
+            reject(`Ha ocurrido un error al consultar la dirección`)
+          }
+          
         });
     })
   }

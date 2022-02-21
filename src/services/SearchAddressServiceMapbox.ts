@@ -13,7 +13,7 @@ export class SearchAddressServiceMapbox {
 
         return new Promise((resolve, reject) => {
 
-            let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${data.address}.json?types=country&limit=${data.limit ?? 5}&access_token=${configs.APIKEY_MAPBOX}`;
+            let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${data?.address}.json?types=country&limit=${data?.limit ?? 5}&access_token=${configs.APIKEY_MAPBOX}`;
             let config: AxiosRequestConfig = {
                 method: 'get',
                 url: url,
@@ -25,11 +25,12 @@ export class SearchAddressServiceMapbox {
                     if (response.status != 200) {
                         reject(response?.data)
                     }
-                    //let dataResponse: any[] = this.responseMap(response.data?.results)
-                    resolve(response?.data);
+                    
+                    let dataResponse: any[] = this.responseMap(response.data?.features);
+                    resolve(dataResponse);
                 })
                 .catch((error: any) => {
-                    reject(error?.response?.data)
+                    reject(error?.response?.data);
                 });
         })
     }
@@ -39,7 +40,7 @@ export class SearchAddressServiceMapbox {
         let arrayResponse: any[] = [];
 
         data.forEach((value: any) => {
-            arrayResponse.push({ lat: value?.lat, lon: value?.lon })
+            arrayResponse.push({ lat: value?.center[1], lon: value?.center[0] });
         })
         return arrayResponse
 
