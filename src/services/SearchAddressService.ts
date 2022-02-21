@@ -3,7 +3,6 @@ const configs: configsTypes = require('../configs/confs');
 import { configsTypes } from '../configs/confs';
 import { typesSearchPlacesRequest } from '../interfaces/typesSearchPlacesRequest';
 
-
 /**
      * Clase que se encarga de manejar las solicitudes de búsqueda de direcciones y retorna las coordenadas.
      * @author Miguel García
