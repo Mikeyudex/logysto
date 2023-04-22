@@ -25,7 +25,7 @@ const port = 6090
 const sslServer = https.createServer(
     {
         key: fs.readFileSync(path.join(__dirname, '../src/Certificados_Galilea/galilea.privatekey.biz_key.txt')),
-        secureProtocol: 'SSLv3_method',
+        secureProtocol: 'TLSv1_2_method',
         cert: fs.readFileSync(path.join(__dirname, '../src/Certificados_Galilea/galilea_uflow_biz.crt.txt')),
         rejectUnauthorized: false
     },
