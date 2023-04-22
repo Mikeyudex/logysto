@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon dist/index.js",
     "build": "tsc",
-    "deploy": "node ./dist/index.js"
+    "deploy": "node ./dist/index.js",
+    "watch": "tsc --watch"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
   },
   "homepage": "https://github.com/Mikeyudex/logysto#readme",
   "dependencies": {
-    "axios": "^0.26.0",
+    "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -28,7 +29,9 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
-    "mongoose": "^6.2.2"
+    "mongoose": "^6.2.2",
+    "soap": "^1.0.0",
+    "strong-soap": "^3.5.0"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -37,6 +40,7 @@
     "@types/jsonwebtoken": "^8.5.8",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^17.0.18",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "typescript": "^5.0.4"
   }
 }
